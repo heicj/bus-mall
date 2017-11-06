@@ -31,9 +31,27 @@ for(let i = 0; i < products.length; i++){
 Product.prototype.render = function (){
     const section = document.getElementById('productChoices');
     const ele = document.createElement('img');
-    ele.src = bag.src;
+    ele.src = this.src;
     section.appendChild(ele);
 };
 
-bag.render();
+
+products[0].render();
+
+
+
+// bag.render();
 console.log(products);
+
+function RenderThree (){
+    const three = [];
+    for (let i = 0; three.length < 3; i++){
+        const randomProduct = products[Math.floor((Math.random() * products.length))].name;
+        if(randomProduct !== three.includes(randomProduct)){
+            three.push(randomProduct);
+        }
+    }
+    return three;
+}
+
+console.log(RenderThree());
