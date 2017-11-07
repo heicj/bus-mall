@@ -28,39 +28,48 @@ Product.prototype.render = function (){
 
 products[0].render();
 
+// function randomThree (){
+//     const availProducts = products;
+//     const threeProducts = [];
+//     const randomNumber = Math.floor((Math.random() * products.length));
+//     for(let i = 0; i < 3; i++){
+//         const randomProduct = products[randomNumber];
+//         threeProducts.push(randomProduct);
+//         availProducts.
+//     }
 
-
-
+// }
+// randomThree();
 
 
 // bag.render();
-console.log(products);
+// console.log(products);
 
-// function RenderThree (){
-//     const threeObjects = [];
-//     const threeNames = [];
-//     for (let i = 0; threeNames.length < 3; i++){
-//         const randomNumber = Math.floor((Math.random() * products.length));
-//         const productObject = products[randomNumber];
-//         const productName = products[randomNumber].name;
-//         threeNames.push(productName);
-//         if(productName !== threeNames.includes(productName)){
-//             threeObjects.push(productObject);
-//         }
-//     }
-//     // return three;
-//     for (let i = 0; i < 3; i++){
-//         const section = document.getElementById('productChoices');
-//         const ele = document.createElement('img');
-//         ele.src = threeObjects[i].src;
-//         debugger;
-//         section.appendChild(ele);
-//         return ele;
-//     }
-// }
+function RenderThree (){
+    const threeObjects = [];
+    // const threeNames = [];
+    for (let i = 0; threeObjects.length < 3; i++){
+        const randomNumber = Math.floor((Math.random() * products.length));
+        const productObject = products[randomNumber];
+        // const productName = products[randomNumber].name;
+        // threeNames.push(productName);
+        if(productObject !== threeObjects.includes(productObject)){
+            threeObjects.push(productObject);
+        }
+    }
+    return threeObjects;
+    // for (let i = 0; i < 3; i++){
+    //     const section = document.getElementById('productChoices');
+    //     const ele = document.createElement('img');
+    //     ele.src = threeObjects[i].src;
+    //     debugger;
+    //     section.appendChild(ele);
+    //     return ele;
+}
 
-// // console.log(RenderThree());
-// RenderThree();
+
+// console.log(RenderThree());
+console.log(RenderThree());
 
 Product.prototype.wasClicked = function () {
     this.timesClicked ++;
