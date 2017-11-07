@@ -2,3 +2,7 @@ img{
     width: 200px;
     height: auto;
 }
+
+#productChoices{
+    display: block;
+}
