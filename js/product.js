@@ -1,12 +1,12 @@
 'use strict';
 
 //constructor for images 
-function Product(name, src) {
-    this.name = name;
-    this.src = '/images/' + src;
-    this.timesClicked = 0;
-    this.timesShown = 0;
-}
+// function Product(name, src) {
+//     this.name = name;
+//     this.src = '/images/' + src;
+//     this.timesClicked = 0;
+//     this.timesShown = 0;
+// }
 
 // //render method for Product
 // Product.prototype.render = function (){

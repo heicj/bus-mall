@@ -1,8 +1,14 @@
+body{
+    background-color: lightblue;
+}
+
 img{
-    width: 200px;
+    width: 100px;
     height: auto;
+    margin: 10px;
 }
 
 #productChoices{
     display: block;
+    background-color: white;
 }

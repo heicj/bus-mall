@@ -4,7 +4,7 @@ let totalClicks = 0;
 //constructor for images 
 function Product(name, src) {
     this.name = name;
-    this.src = '/images/' + src;
+    this.src = './images/' + src;
     this.timesClicked = 0;
     this.timesShown = 0;
 }
@@ -13,10 +13,14 @@ const products = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum'
 
 //creates instances of each product
 for(let i = 0; i < products.length; i++){
-    products[i] = new Product(products[i], products[i] + '.jpg');
+    if(products[i] === 'usb' ){
+        products[i] = new Product(products[i], products[i] + '.gif');
+    }else if (products[i] === 'sweep'){
+        products[i] = new Product(products[i], products[i] + '.png');
+    }else{
+        products[i] = new Product(products[i], products[i] + '.jpg');
+    }
 }
-
-
 
 
 
@@ -31,28 +35,24 @@ Product.prototype.render = function (){
 
 // products[0].render();
 console.log(products[0]);
-// function randomThree (){
-//     const availProducts = products;
-//     const threeProducts = [];
-//     const randomNumber = Math.floor((Math.random() * products.length));
-//     for(let i = 0; i < 3; i++){
-//         const randomProduct = products[randomNumber];
-//         threeProducts.push(randomProduct);
-//         availProducts.
-//     }
-
-// }
-// randomThree();
 
 
 function threeRandomNumbers(){
     const numbers = [];
-    for(let i = 0; numbers.length < 3; i++){
+    while (numbers.length < 3){
         const randomNumber = Math.floor((Math.random() * products.length));
         if(randomNumber !== numbers.includes[randomNumber]){
             numbers.push(randomNumber);
+
         }
     }
+    // for(let i = 0; numbers.length < 3; i++){
+    //     const randomNumber = Math.floor((Math.random() * products.length));
+    //     if(randomNumber !== numbers.includes[randomNumber]){
+    //         numbers.push(randomNumber);
+    //     }
+    // }
+    console.log(numbers);
     products[numbers[0]].render();
     products[numbers[0]].timesShown++;
     products[numbers[1]].render();
@@ -61,11 +61,13 @@ function threeRandomNumbers(){
     products[numbers[2]].timesShown++;
 }
 
-
+// threeRandomNumbers();
 
 console.log(threeRandomNumbers());
 
 
+// products.sweep.src = './images/sweep.png';
+// console.log(products.sweep);
 
 Product.prototype.wasClicked = function () {
     this.timesClicked ++;
@@ -80,11 +82,11 @@ function clickHandler(e){
         console.log(clickedProduct);
         return;
     }
-
+    
     for(let i = 0; i < products.length; i++){
         const productClass = clickedProduct.classList.value;
-
         if(products[i].name === productClass){
+           
             products[i].wasClicked();
             console.log(products[i].timesClicked);
         }
@@ -93,3 +95,4 @@ function clickHandler(e){
 }
 console.log(products[0]);
 totalClicks++;
+
