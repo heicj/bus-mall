@@ -36,7 +36,7 @@ Product.prototype.render = function (){
 };
 
 
-products[0].render();
+// products[0].render();
 
 
 
@@ -46,12 +46,21 @@ console.log(products);
 function RenderThree (){
     const three = [];
     for (let i = 0; three.length < 3; i++){
-        const randomProduct = products[Math.floor((Math.random() * products.length))].name;
+        const randomProduct = products[Math.floor((Math.random() * products.length))];
         if(randomProduct !== three.includes(randomProduct)){
             three.push(randomProduct);
         }
     }
-    return three;
+    // return three;
+    for (let i = 0; i < 3; i++){
+        const section = document.getElementById('productChoices');
+        const ele = document.createElement('img');
+        ele.src = three[i].src;
+        debugger;
+        section.appendChild(ele);
+        return section;
+    }
 }
 
 console.log(RenderThree());
+RenderThree();
