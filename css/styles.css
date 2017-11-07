@@ -10,5 +10,10 @@ img{
 
 #productChoices{
     display: block;
-    background-color: white;
+    /* background-color: white; */
+}
+
+#chart{
+    height: 300px;
+    width: 200px;
 }

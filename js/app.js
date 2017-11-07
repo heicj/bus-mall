@@ -63,6 +63,14 @@ function threeRandomNumbers(){
 
 threeRandomNumbers();
 
+function endgame() {
+    const game = document.getElementById('productChoices');
+    game.removeEventListener('click', clickHandler);
+    console.table(products);
+    alert('You have used all your votes');
+    drawChart();
+}
+
 
 
 
@@ -89,12 +97,54 @@ function clickHandler(e){
             console.log(products[i].timesClicked);
         }
     }
+    //remove node code from:  https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
     const myNode = document.getElementById('productChoices');
     while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);
     }
     threeRandomNumbers();
     totalClicks++;
+    if (totalClicks >= 25){
+        endgame();
+    }
 }
 console.log(products[0]);
 
+function drawChart(){
+    
+    const productNames = [];
+    const productData = [];
+    
+    for (let i = 0; i < products.length; i++){
+        productNames.push(products[i].name);
+        productData.push(products[i].timesClicked);
+    }
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    const chart = new Chart(
+        context,
+        {
+            type: 'bar',
+            data: {
+                labels: productNames,
+                datasets:[
+                    {
+                        label: 'Votes',
+                        data: productData,
+                        backgroundColor: 'rgba(30,100,100,1)'
+                    }
+                ]
+
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Product Votes'
+                }
+            }
+
+        }
+    );
+
+}
