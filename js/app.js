@@ -1,4 +1,5 @@
 'use strict';
+let totalClicks = 0;
 
 //constructor for images 
 function Product(name, src) {
@@ -17,17 +18,19 @@ for(let i = 0; i < products.length; i++){
 
 
 
+
+
 //render method for Product
 Product.prototype.render = function (){
     const section = document.getElementById('productChoices');
     const ele = document.createElement('img');
     ele.src = this.src;
     section.appendChild(ele);
-    ele.classList.add(this.type);
+    ele.classList.add(this.name);
 };
 
-products[0].render();
-
+// products[0].render();
+console.log(products[0]);
 // function randomThree (){
 //     const availProducts = products;
 //     const threeProducts = [];
@@ -42,34 +45,27 @@ products[0].render();
 // randomThree();
 
 
-// bag.render();
-// console.log(products);
-
-function RenderThree (){
-    const threeObjects = [];
-    // const threeNames = [];
-    for (let i = 0; threeObjects.length < 3; i++){
+function threeRandomNumbers(){
+    const numbers = [];
+    for(let i = 0; numbers.length < 3; i++){
         const randomNumber = Math.floor((Math.random() * products.length));
-        const productObject = products[randomNumber];
-        // const productName = products[randomNumber].name;
-        // threeNames.push(productName);
-        if(productObject !== threeObjects.includes(productObject)){
-            threeObjects.push(productObject);
+        if(randomNumber !== numbers.includes[randomNumber]){
+            numbers.push(randomNumber);
         }
     }
-    return threeObjects;
-    // for (let i = 0; i < 3; i++){
-    //     const section = document.getElementById('productChoices');
-    //     const ele = document.createElement('img');
-    //     ele.src = threeObjects[i].src;
-    //     debugger;
-    //     section.appendChild(ele);
-    //     return ele;
+    products[numbers[0]].render();
+    products[numbers[0]].timesShown++;
+    products[numbers[1]].render();
+    products[numbers[1]].timesShown++;
+    products[numbers[2]].render();
+    products[numbers[2]].timesShown++;
 }
 
 
-// console.log(RenderThree());
-console.log(RenderThree());
+
+console.log(threeRandomNumbers());
+
+
 
 Product.prototype.wasClicked = function () {
     this.timesClicked ++;
@@ -81,16 +77,19 @@ vote.addEventListener('click', clickHandler);
 function clickHandler(e){
     const clickedProduct = e.target;
     if (clickedProduct.id === 'productChoices'){
-        console.log(clickedProduct.id);
+        console.log(clickedProduct);
         return;
     }
 
     for(let i = 0; i < products.length; i++){
         const productClass = clickedProduct.classList.value;
 
-        if(products[i].type === productClass){
+        if(products[i].name === productClass){
             products[i].wasClicked();
             console.log(products[i].timesClicked);
         }
     }
+    // threeRandomNumbers();
 }
+console.log(products[0]);
+totalClicks++;
