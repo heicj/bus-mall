@@ -41,14 +41,14 @@ function threeRandomNumbers(){
     const numbers = [];
     while (numbers.length < 3){
         const randomNumber = Math.floor((Math.random() * products.length));
-        if(randomNumber !== numbers.includes[randomNumber]){
+        if(!numbers.includes(randomNumber)){
             numbers.push(randomNumber);
 
         }
     }
     // for(let i = 0; numbers.length < 3; i++){
     //     const randomNumber = Math.floor((Math.random() * products.length));
-    //     if(randomNumber !== numbers.includes[randomNumber]){
+    //     if(randomNumber !== numbers.includes(randomNumber)){
     //         numbers.push(randomNumber);
     //     }
     // }
@@ -61,9 +61,9 @@ function threeRandomNumbers(){
     products[numbers[2]].timesShown++;
 }
 
-// threeRandomNumbers();
+threeRandomNumbers();
 
-console.log(threeRandomNumbers());
+
 
 
 // products.sweep.src = './images/sweep.png';
@@ -82,17 +82,19 @@ function clickHandler(e){
         console.log(clickedProduct);
         return;
     }
-    
     for(let i = 0; i < products.length; i++){
         const productClass = clickedProduct.classList.value;
         if(products[i].name === productClass){
-           
             products[i].wasClicked();
             console.log(products[i].timesClicked);
         }
     }
-    // threeRandomNumbers();
+    const myNode = document.getElementById('productChoices');
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+    threeRandomNumbers();
+    totalClicks++;
 }
 console.log(products[0]);
-totalClicks++;
 
