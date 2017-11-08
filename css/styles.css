@@ -1,6 +1,9 @@
 body{
-    background-image: url('../dark-triangles/dark-triangles.png');
+    /* background image from: https://www.toptal.com/designers/subtlepatterns/page/2/ */   
+     background-image: url('../dark-triangles/dark-triangles.png');
 }
+
+
 
 h1{
     text-align: center;

@@ -137,7 +137,7 @@ function drawChart(chartType){
                     {
                         label: chartType,
                         data: productData,
-                        backgroundColor: 'rgb(211, 211, 211)'
+                        backgroundColor: 'rgb(255, 255, 255)'
                     }
                 ]
 
