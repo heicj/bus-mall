@@ -1,19 +1,46 @@
 body{
-    background-color: lightblue;
+    background-image: url('../dark-triangles/dark-triangles.png');
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-family: 'Spectral SC', serif;
+    text-shadow: white 1px 2px;
+    color: rgb(211, 211, 211);
 }
 
 img{
-    width: 100px;
+    width: 250px;
     height: auto;
-    margin: 10px;
+    margin: 0 auto;
+
+    
 }
 
 #productChoices{
-    display: block;
-    /* background-color: white; */
+    display: flex;
+    height: 300px;
+    margin: 10px 250px;
+    
 }
 
-#chart{
+div#chart{
     height: 300px;
-    width: 200px;
+    width: 500px;
+    
+}
+
+div#percentChart{
+    height: 300px;
+    width: 500px;
+    
+}
+
+section#dataCharts{
+    display: flex;
+    justify-content: space-around;
+    height: 450px;
+    margin-top: 100px;
 }

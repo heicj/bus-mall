@@ -6,15 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel ="stylesheet" href = "css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
 </head>
 <body>
     <h1>Please Choose A Product</h1>
-    <section id = 'productChoices'>
 
+    <section id = 'productChoices'></section>
+
+    <section id = 'dataCharts'>
+        <div id = 'chart'>
+            <canvas height ="500" width ="400" id = 'absolutecanvas'>This should be a chart</canvas>
+        </div>
+
+        <div id = 'percentChart'>
+            <canvas height = "500" width = "400" id = 'percentagecanvas'>This should be a chart</canvas>
+        </div>
     </section>
-    <div id = 'chart'>
-    <canvas height ="400" width ="300" id = 'canvas'>This should be a chart</canvas>
-    </div>
+
+
     <script src = "vendor/Chart.js"></script>
     <script src ="js/product.js"></script>
     <script src="js/app.js"></script>

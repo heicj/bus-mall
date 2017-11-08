@@ -33,8 +33,8 @@ Product.prototype.render = function (){
     ele.classList.add(this.name);
 };
 
-// products[0].render();
-console.log(products[0]);
+
+
 
 
 function threeRandomNumbers(){
@@ -46,12 +46,6 @@ function threeRandomNumbers(){
 
         }
     }
-    // for(let i = 0; numbers.length < 3; i++){
-    //     const randomNumber = Math.floor((Math.random() * products.length));
-    //     if(randomNumber !== numbers.includes(randomNumber)){
-    //         numbers.push(randomNumber);
-    //     }
-    // }
     console.log(numbers);
     products[numbers[0]].render();
     products[numbers[0]].timesShown++;
@@ -60,26 +54,25 @@ function threeRandomNumbers(){
     products[numbers[2]].render();
     products[numbers[2]].timesShown++;
 }
-
 threeRandomNumbers();
+
 
 function endgame() {
     const game = document.getElementById('productChoices');
     game.removeEventListener('click', clickHandler);
     console.table(products);
     alert('You have used all your votes');
-    drawChart();
+    drawChart('percentage');
+    drawChart('absolute');
 }
 
 
 
-
-// products.sweep.src = './images/sweep.png';
-// console.log(products.sweep);
-
 Product.prototype.wasClicked = function () {
     this.timesClicked ++;
 };
+
+
 
 const vote = document.getElementById('productChoices');
 vote.addEventListener('click', clickHandler);
@@ -108,19 +101,31 @@ function clickHandler(e){
         endgame();
     }
 }
-console.log(products[0]);
 
-function drawChart(){
-    
+
+
+
+
+function drawChart(chartType){
     const productNames = [];
     const productData = [];
-    
     for (let i = 0; i < products.length; i++){
         productNames.push(products[i].name);
-        productData.push(products[i].timesClicked);
+        if(chartType === 'percentage'){
+            const percent = Math.round((products[i].timesClicked / products[i].timesShown) * 100);
+            productData.push(percent);
+        }else{
+            productData.push(products[i].timesClicked);
+        }
     }
-    const canvas = document.getElementById('canvas');
+    const canvas = document.getElementById(chartType + 'canvas');
     const context = canvas.getContext('2d');
+    let chartTitle = '';
+    if (chartType === 'percentage'){
+        chartTitle = 'Clicked on Percentage';
+    }else{
+        chartTitle = 'Votes';
+    }
 
     const chart = new Chart(
         context,
@@ -130,9 +135,9 @@ function drawChart(){
                 labels: productNames,
                 datasets:[
                     {
-                        label: 'Votes',
+                        label: chartType,
                         data: productData,
-                        backgroundColor: 'rgba(30,100,100,1)'
+                        backgroundColor: 'rgb(211, 211, 211)'
                     }
                 ]
 
@@ -140,7 +145,7 @@ function drawChart(){
             options: {
                 title: {
                     display: true,
-                    text: 'Product Votes'
+                    text: chartTitle
                 }
             }
 
@@ -148,3 +153,41 @@ function drawChart(){
     );
 
 }
+
+// function drawChart(){
+//     const productNames = [];
+//     const productPercent = [];
+//     for (let i = 0; i < products.length; i++){
+//         productNames.push(products[i].name);
+//         const percent = Math.round((products[i].timesClicked / products[i].timesShown) * 100);
+//         productPercent.push(percent);
+//     }
+//     const percentCanvas = document.getElementById('percentCanvas');
+//     const percentContext = percentCanvas.getContext('2d');
+
+//     const chart = new Chart(
+//         percentContext,
+//         {
+//             type: 'bar',
+//             data: {
+//                 labels: productNames,
+//                 datasets:[
+//                     {
+//                         label: 'Clicked on Percentage',
+//                         data: productPercent,
+//                         backgroundColor: 'rgba(30,100,100,1)'
+//                     }
+//                 ]
+
+//             },
+//             options: {
+//                 title: {
+//                     display: true,
+//                     text: 'Percentage of times voted for when shown'
+//                 }
+//             }
+
+//         }
+//     );
+
+// }
