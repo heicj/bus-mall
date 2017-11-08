@@ -2,24 +2,50 @@
 let totalClicks = 0;
 
 //constructor for images 
-function Product(name, src) {
+function Product(name, src, timesClicked, timesShown) {
     this.name = name;
-    this.src = './images/' + src;
-    this.timesClicked = 0;
-    this.timesShown = 0;
+    this.src =  src;
+    this.timesClicked = timesClicked || 0;
+    this.timesShown = timesShown || 0;
 }
 
-const products = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+const products = [];
 
-//creates instances of each product
-for(let i = 0; i < products.length; i++){
-    if(products[i] === 'usb' ){
-        products[i] = new Product(products[i], products[i] + '.gif');
-    }else if (products[i] === 'sweep'){
-        products[i] = new Product(products[i], products[i] + '.png');
-    }else{
-        products[i] = new Product(products[i], products[i] + '.jpg');
+
+if(localStorage.products){
+    console.log('products exist');
+    const productsArray = JSON.parse(localStorage.products);
+    for (let i = 0; i < productsArray.length; i++){
+        if(productsArray[i] === 'usb' ){
+            productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShown);
+            products.push(productsArray[i]);
+        }else if (productsArray[i] === 'sweep'){
+            productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShwon);
+            products.push(productsArray[i]);
+        }else{
+            productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShwon);
+            products.push(productsArray[i]);
+        }
+        
     }
+}else{
+//creates instances of each product
+    const productsName = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass']; 
+    for(let i = 0; i < productsName.length; i++){
+
+        if(productsName[i] === 'usb' ){
+            products[i] = new Product(productsName[i], 'images/usb.gif');
+            
+        }else if (productsName[i] === 'sweep'){
+            products[i] = new Product(productsName[i], 'images/sweep.png');
+            
+        }else{
+            products[i] = new Product(productsName[i], 'images/' + productsName[i] + '.jpg');
+            
+        }
+    } console.table(products);
+    
+
 }
 
 
@@ -35,7 +61,7 @@ Product.prototype.render = function (){
 
 
 
-
+console.log(products);
 
 function threeRandomNumbers(){
     const numbers = [];
@@ -64,6 +90,7 @@ function endgame() {
     alert('You have used all your votes');
     drawChart('percentage');
     drawChart('absolute');
+    localStorage.setItem('products', JSON.stringify(products));
 }
 
 
@@ -97,7 +124,7 @@ function clickHandler(e){
     }
     threeRandomNumbers();
     totalClicks++;
-    if (totalClicks >= 25){
+    if (totalClicks >= 10){
         endgame();
     }
 }
