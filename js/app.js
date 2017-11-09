@@ -6,7 +6,7 @@ function Product(name, src, timesClicked, timesShown) {
     this.name = name;
     this.src =  src;
     this.timesClicked = timesClicked || 0;
-    this.timesShown = timesShown;
+    this.timesShown = timesShown || 0;
 }
 
 const products = [];
