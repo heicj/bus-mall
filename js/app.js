@@ -124,7 +124,7 @@ function clickHandler(e){
     }
     threeRandomNumbers();
     totalClicks++;
-    if (totalClicks >= 10){
+    if (totalClicks >= 25){
         endgame();
     }
 }
