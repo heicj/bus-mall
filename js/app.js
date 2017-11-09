@@ -19,10 +19,10 @@ if(localStorage.products){
             productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShown);
             products.push(productsArray[i]);
         }else if (productsArray[i] === 'sweep'){
-            productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShwon);
+            productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShown);
             products.push(productsArray[i]);
         }else{
-            productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShwon);
+            productsArray[i] = new Product(productsArray[i].name, productsArray[i].src, productsArray[i].timesClicked, productsArray[i].timesShown);
             products.push(productsArray[i]);
         }
     }
@@ -82,7 +82,7 @@ function endgame() {
     game.removeEventListener('click', clickHandler);
     console.table(products);
     alert('You have used all your votes');
-    // drawChart('percentage');
+    drawChart('percentage');
     drawChart('absolute');
     localStorage.setItem('products', JSON.stringify(products));
 }
