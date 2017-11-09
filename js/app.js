@@ -11,7 +11,6 @@ function Product(name, src, timesClicked, timesShown) {
 
 const products = [];
 
-
 if(localStorage.products){
     console.log('products exist');
     const productsArray = JSON.parse(localStorage.products);
@@ -83,7 +82,7 @@ function endgame() {
     game.removeEventListener('click', clickHandler);
     console.table(products);
     alert('You have used all your votes');
-    drawChart('percentage');
+    // drawChart('percentage');
     drawChart('absolute');
     localStorage.setItem('products', JSON.stringify(products));
 }
@@ -119,7 +118,7 @@ function clickHandler(e){
     }
     threeRandomNumbers();
     totalClicks++;
-    if (totalClicks >= 10){
+    if (totalClicks >= 25){
         endgame();
     }
 }
